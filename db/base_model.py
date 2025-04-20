@@ -15,6 +15,6 @@ class Base(AsyncAttrs, DeclarativeBase): # pylint: disable=too-few-public-method
     __abstract__ = True
 
     id:         Mapped[int]      = mapped_column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=False), nullable=False, default=func.now)
-    updated_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=False), nullable=False, default=func.now,
-                                                 onupdate=func.now)
+    created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=False), nullable=False, default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=False), nullable=False, default=func.now(),
+                                                 onupdate=func.now())
