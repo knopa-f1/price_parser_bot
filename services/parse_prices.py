@@ -30,7 +30,6 @@ async def parse_price(url, xpath) -> Decimal|None:
     raw_price = selector.xpath(xpath + '/text()').get()
     if raw_price:
         price = re.sub(r"[^\d.,]", "", raw_price).replace(",", ".")
-        print(url, price)
         return Decimal(price)
 
 async def get_parsed_prices(sources:list[Source]) -> tuple[list, list]:

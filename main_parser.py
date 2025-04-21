@@ -15,8 +15,5 @@ async def main():
     scheduler.add_job(parse_prices_and_load_to_db, IntervalTrigger(seconds=PARSER_INTERVAL))
     scheduler.start()
     await asyncio.Event().wait()
-    # async with AsyncScheduler() as scheduler:
-    #     await scheduler.add_schedule(parse_prices_and_load_to_db, IntervalTrigger(seconds=PARSER_INTERVAL), id="parce_prices")
-    #     await scheduler.run_until_stopped()
 
 asyncio.run(main())

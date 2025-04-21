@@ -13,6 +13,7 @@ from lexicon.lexicon import LEXICON_RU
 
 from keyboards.inline_keyboards import start_keyboard
 from services.agregate_prices import get_average_prices
+from services.parse_prices import parse_prices_and_load_to_db
 
 from services.upload_file_service import upload_file_to_db
 from states.states import UploadExcel
@@ -54,6 +55,7 @@ async def process_user_send_file(message: Message, bot: Bot, state: FSMContext):
     finally:
         os.remove(filename)
     await state.clear()
+    # await parse_prices_and_load_to_db()
 
 @router.message(StateFilter(UploadExcel.waiting_for_file), ~IsCorrectFormat())
 async def process_user_send_file_warning(message: Message):
